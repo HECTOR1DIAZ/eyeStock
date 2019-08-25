@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Creating Database</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        /* *{
+                border: 1px solid purple;
+            } */
+        #main {
+            width: 900px;
+        }
+
+        #navigation {
+            text-decoration: none;
+        }
+
+        .nav {
+            background: lightslategray;
+        }
+
+        .nav-item {
+            background: cornflowerblue;
+        }
+
+        h1 {
+            color: rgba(175, 169, 184, 0.822);
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 20px;
+        }
+
+        .img1 {
+            width: 70%;
+        }
+
+        .img2 {
+            display: inline-block;
+            width: 15%;
+
+        }
+
+        #logo {
+            display: inline-block;
+            width: 75%;
+        }
+
+        .dropdown {
+            width: 23%;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: lightblue;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        #navbar{
+            text-decoration: none;
+            background-color:none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main" class="container justify-content-center">
+        <nav class="navbar navbar-dark bg-info flex-md-nowrap p-0 shadow">
+            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/dashboard">eyeStock</a>
+
+            <div id="navbar">
+                <ul class="navbar-nav list-group list-group-horizontal mb-3">
+                    <li class="nav-item list-group-item">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li><br>
+                    <li class="nav-item list-group-item">
+                        <a class="nav-link" href="#">Products</a>
+                    </li>
+                    <li class="nav-item list-group-item">
+                        <a class="nav-link" href="/employee_list">Employees</a>
+                    </li>
+                    <li class="nav-item list-group-item">
+                        <a class="nav-link desabled" href="/report" >Reports</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="dropdown">
+                <a class="dropbtn"><img class="img2" src="{% static 'images/login2.png' %}" /></a>
+                <div class="dropdown-content">
+                    <a href="/company_info">Account Info</a>
+                    <form action="/logout" method="post">
+                        <input class="btn btn-primary btn-block active" type="submit" value="Log Out">
+                    </form>
+                </div>
+            </div>
+
+
+        </nav>
+        
+
+        <!-- This is to add the product -->
+
+        <div id="product" class="form-group">
+            <h3>Add Product</h3>
+            <form action="/add_product" method="POST">
+                {% csrf_token %}
+                <label for="product_name">Name of Product:</label>
+                <input type="text" name="product_name" id="product_name" value="{{product_name}}">
+
+                <label for="barcode_number">Barcode Number:</label>
+                <input type="number" name="barcode_number" id="barcode_number" value="{{barcode}}">
+
+                <label for="description">Description:</label>
+                <input type="text" name="description" id="description" value="{{description}}">
+
+                <label for="quantity">Quantity</label>
+                <input type="text" name="quantity" id="quantity">
+
+                <input type="submit" value="Add Product">
+
+
+            </form>
+
+        </div>
+
+        <!-- THIS IS TO ADD VEHICLES -->
+
+
+        <div id="vehicles" class="form-group">
+            <h3>Add Vehicle</h3>
+            <form action="/add_vehicle" method="POST">
+                {% csrf_token %}
+                <label for="year">Year:</label>
+                <input type="text" name="year" id="year">
+
+                <label for="make">Make:</label>
+                <input type="text" name="make" id="make">
+
+                <label for="model">Model:</label>
+                <input type="text" name="model" id="model">
+
+                <label for="vin">Vehicle Identification Number:</label>
+                <input type="text" name="vin" id="vin">
+
+                <label for="stock_number">Stock Number:</label>
+                <input type="text" name="stock_number" id="stock_number">
+
+                <input type="submit" value="Add Vehicle">
+
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
