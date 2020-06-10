@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    {% load static %}
+    <title>Product Checkout</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <link href="jumbotron.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+        <nav class="navbar navbar-dark fixed-top bg-info flex-md-nowrap p-0 shadow">
+                <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/dashboard"
+                  >eyeStock</a
+                >
+                <ul class="navbar-nav px-3">
+                  <li class="nav-item text-nowrap">
+                    <div class="dropdown">
+                      <a class="dropbtn"
+                        ><img class="img2" src="{% static 'images/login2.png' %}"
+                      /></a>
+                      <div class="dropdown-content">
+                        <form action="/logout" method="post">
+                          {% csrf_token %}
+                          <input class="btn btn-light" type="submit" value="Sign Out" />
+                        </form>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </nav>
+    
+
+    <main role="main">
+
+            <div class="container">
+                    <table class="table table-striped table-bordered bg-light text-white justify-content-end text-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Product</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Employee</th>
+                            </tr>
+                        </thead>
+                        {% for product in products %}
+                        <tbody>
+                            <tr>
+                                <td>{{product.product_name}}</td>
+                                <td><div class="input-group flex-nowrap col-sm-12">
+                                        <div class="input-group-prepend">
+                                        
+                                        </div>
+                                        <input type="text" class="form-control" aria-label="Username" aria-describedby="addon-wrapping">
+                                    </div></td>
+                                <td>
+                                    <select name="employees" id="employees">
+
+                                </select></td>
+                        {% endfor %}
+
+                                        
+                        </tbody>
+                    </table>
+
+
+                <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                    crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                    crossorigin="anonymous"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                    crossorigin="anonymous"></script>
+            </div>
+            <div class="jumbotron bg-info">
+                </div>
+        <hr>
+        <footer class="container font-italic">
+            <p>&copy; eyeStock 2019 </p>
+        </footer>
+
+</body>

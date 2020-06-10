@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Creating Database</title>
+    {% load static %}
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-dark bg-info flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/dashboard"
+        >eyeStock</a
+      >
+
+      <div id="navbar"></div>
+      <div class="dropdown">
+        <a class="dropbtn"
+          ><img class="img2" src="{% static 'images/login2.png' %}"
+        /></a>
+        <div class="dropdown-content">
+          <a href="/company_info">Account Info</a>
+          <form action="/logout" method="post">
+            <input class="btn btn-light" type="submit" value="Sign Out" />
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div id="main" class="container justify-content-center">
+      <!-- This is to add the product -->
+
+      <div id="product" class="form-group">
+        <h3>Add Product</h3>
+        <form action="/add_product" method="POST">
+          {% csrf_token %}
+          <br />
+          <label for="product_name">Product Name:</label>
+          <input
+            type="text"
+            name="product_name"
+            id="product_name"
+            value="{{product_name}}"
+          />
+
+          <label for="barcode_number">Barcode Number:</label>
+          <input
+            type="number"
+            name="barcode_number"
+            id="barcode_number"
+            value="{{barcode}}"
+          />
+          <br />
+          <label for="description">Description:</label>
+          <input
+            type="text"
+            name="description"
+            id="description"
+            value="{{description}}"
+          />
+
+          <label for="quantity">Quantity:</label>
+          <input type="text" name="quantity" id="quantity" />
+
+          <input type="submit" value="Add Product" />
+        </form>
+      </div>
+
+      <!-- THIS IS TO ADD VEHICLES -->
+
+      <div id="vehicles" class="form-group">
+        <h3>Add Vehicle</h3>
+        <form action="/add_vehicle" method="POST">
+          {% csrf_token %} <br />
+          <label for="year">Year:</label>
+          <input type="text" name="year" id="year" />
+
+          <label for="make">Make:</label>
+          <input type="text" name="make" id="make" />
+
+          <label for="model">Model:</label>
+          <input type="text" name="model" id="model" />
+          <br />
+          <label for="vin">Vehicle Identification Number:</label>
+          <input type="text" name="vin" id="vin" />
+
+          <label for="stock_number">Stock Number:</label>
+          <input type="text" name="stock_number" id="stock_number" />
+
+          <input type="submit" value="Add Vehicle" />
+        </form>
+      </div>
+    </div>
+    <div class="jumbotron bg-info"></div>
+    <footer class="container font-italic">
+      <p>&copy; eyeStock 2019</p>
+    </footer>
+  </body>
+</html>
